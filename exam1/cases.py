@@ -13,12 +13,17 @@ In a file called cases.py, implement a function called camel2snake() that takes 
 variable in camel case and outputs the corresponding name in snake case. 
 Assume that the user’s input will indeed be in camel case.
 '''
+import re
+
+
+def camel2snake(camel_str):
+    return re.sub(r'(?<!^)(?=[A-Z])', '_', camel_str).lower()
 
 
 '''
 Now make one that does the opposite: snake2camel()
 '''
 
-
-def foo():
-    pass
+def snake2camel(snake_str):
+    components = snake_str.split('_')
+    return components[0] + ''.join(x.title() for x in components[1:])
